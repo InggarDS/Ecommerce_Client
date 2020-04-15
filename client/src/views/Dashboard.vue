@@ -1,14 +1,28 @@
 <template>
-  <div>Dashboard</div>
+  <div class="dashboard">
+    <left-navbar />
+    <div class="right">
+      <top-navbar />
+      <div>
+         <router-view />
+      </div>
+        <!-- <Content /> -->
+    </div>
+  </div>
 </template>
 
 <script>
+
+import LeftNavbar from '../components/LeftNavbar'
+import TopNavbar from '../components/TopNavbar'
+// import Content from '../components/Content'
+
 export default {
   name: 'Dashboard',
-  created () {
-    if (!localStorage.access_token) {
-      this.$router.push('/')
-    }
+  components: {
+    LeftNavbar,
+    TopNavbar
+    // Content
   }
 }
 </script>

@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import Dashboard from '../views/Dashboard.vue'
+import ContentDashboard from '../components/ContentDashboard.vue'
+import Products from '../components/Products.vue'
+import AddProduct from '../components/AddProduct.vue'
 
 Vue.use(VueRouter)
 
@@ -13,8 +15,18 @@ const routes = [
   },
   {
     path: '/dashboard',
-    name: 'Dashboard',
-    component: Dashboard
+    name: 'ContentDashboard',
+    component: ContentDashboard
+  },
+  {
+    path: '/products',
+    name: 'Products',
+    component: Products
+  },
+  {
+    path: '/addProduct',
+    name: 'AddProduct',
+    component: AddProduct
   }
 ]
 

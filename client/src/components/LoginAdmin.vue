@@ -3,8 +3,8 @@
    <div class="log-form">
     <h2>Login Admin</h2>
     <form @submit.prevent="login">
-      <input type="text" title="username" placeholder="username" /><br><br>
-      <input type="password" title="username" placeholder="password" /><br><br>
+      <input type="email" title="username" placeholder="username" v-model="data.email"/><br><br>
+      <input type="password" title="username" placeholder="password" v-model="data.password"/><br><br>
       <button type="submit" class="btn">Login</button>
     </form>
 </div>
@@ -12,7 +12,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 
 export default {
   name: 'LoginAdmin',
@@ -26,20 +25,13 @@ export default {
   },
   methods: {
     login () {
-      axios({
-        method: 'POST',
-        url: 'http://localhost:3000/login',
-        data: {
-          email: this.data.email,
-          password: this.data.password
-        }
-      })
+      this.$store.dispatch('login', { email: this.data.email, password: this.data.password })
         .then(result => {
           localStorage.setItem('access_token', result.access_token)
-          this.$router.push('/dashboard')
+          this.$store.commit('setLogin', true)
         })
         .catch(err => {
-          console.log(err.response.data)
+          console.log(err)
         })
     }
   }

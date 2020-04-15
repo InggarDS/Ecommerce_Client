@@ -6,29 +6,28 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
-    email: '',
-    password: ''
+    isLogin: false
   },
   mutations: {
-    setLogin (state, payload) {
-      state.email = payload.email
-      state.password = payload.password
+    setLogin (state, status) {
+      state.isLogin = status
     }
   },
   actions: {
-      login () {
-          axios({
-              method: 'POST',
-              url: 'http://localhost:3000/post',
-              data: {
-                  email: this.state.email,
-                  password: this.state.password
-              }
+    login (context, payload) {
+      return new Promise((resolve, reject) => {
+        axios.post('http://localhost:3000/login', {
+          email: payload.email,
+          password: payload.password
+        })
+          .then((result) => {
+            resolve(result.data)
           })
-          .then(result => {
-              localStorage.setItem('access_token', result.acces_token)
+          .catch(err => {
+            reject(err.response.data)
           })
-      }
+      })
+    }
   }
 
 })
