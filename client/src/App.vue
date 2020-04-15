@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <Dashboard v-if="!isLogin"></Dashboard>
-    <Home v-else></Home>
+    <Home v-if="!isLogin"></Home>
+    <Dashboard v-else></Dashboard>
   </div>
 </template>
 <script>
@@ -20,6 +20,9 @@ export default {
   created () {
     if (!localStorage.access_token) {
       this.$store.commit('setLogin', false)
+      this.$router.push('/')
+    } else {
+      this.$store.commit('setLogin', true)
     }
   }
 }

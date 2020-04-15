@@ -1,7 +1,5 @@
 <template>
-<div>
-  <login-admin />
-</div>
+  <LoginAdmin v-if="!isLogin"></LoginAdmin>
 </template>
 
 <script>
@@ -10,6 +8,11 @@ export default {
   name: 'Home',
   components: {
     LoginAdmin
+  },
+  computed: {
+    isLogin () {
+      return this.$store.state.isLogin
+    }
   }
 }
 </script>

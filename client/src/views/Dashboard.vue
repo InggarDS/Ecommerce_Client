@@ -3,7 +3,7 @@
     <left-navbar />
     <div class="right">
       <top-navbar />
-      <div>
+      <div class="content">
          <router-view />
       </div>
         <!-- <Content /> -->
@@ -15,14 +15,12 @@
 
 import LeftNavbar from '../components/LeftNavbar'
 import TopNavbar from '../components/TopNavbar'
-// import Content from '../components/Content'
 
 export default {
   name: 'Dashboard',
   components: {
     LeftNavbar,
     TopNavbar
-    // Content
   }
 }
 </script>

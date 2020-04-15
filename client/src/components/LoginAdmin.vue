@@ -3,8 +3,8 @@
    <div class="log-form">
     <h2>Login Admin</h2>
     <form @submit.prevent="login">
-      <input type="email" title="username" placeholder="username" v-model="data.email"/><br><br>
-      <input type="password" title="username" placeholder="password" v-model="data.password"/><br><br>
+      <input type="email" title="username" placeholder="username" v-model="data.email" required/><br><br>
+      <input type="password" title="username" placeholder="password" v-model="data.password" required/><br><br>
       <button type="submit" class="btn">Login</button>
     </form>
 </div>
@@ -29,6 +29,7 @@ export default {
         .then(result => {
           localStorage.setItem('access_token', result.access_token)
           this.$store.commit('setLogin', true)
+          this.$router.push('/dashboard')
         })
         .catch(err => {
           console.log(err)

@@ -27,6 +27,10 @@ const store = new Vuex.Store({
             reject(err.response.data)
           })
       })
+    },
+    logout () {
+      localStorage.clear()
+      this.commit('setLogin', false)
     }
   }
 

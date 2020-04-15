@@ -6,7 +6,12 @@
 
 <script>
 export default {
-  name: 'Products'
+  name: 'Products',
+  created () {
+    if (!localStorage.access_token) {
+      this.$store.commit('setLogin', false)
+    }
+  }
 }
 </script>
 

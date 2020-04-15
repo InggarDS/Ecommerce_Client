@@ -31,8 +31,7 @@ body {
   width: 200px;
   height: 100%;
   background-color: #273841;
-  position: fixed;
-  z-index: 2;
+  /* position: fixed; */
 }
 
 .right {
@@ -43,15 +42,18 @@ body {
 .content {
   height: 100%;
   width: 100%;
-  background-color: cadetblue;
+  background-color: #ececec;
   overflow-y: auto;
 }
 
 .top-navbar {
   max-height: 100px;
   width: 100%;
-  background-color: brown;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
 }
+
 
 
 #app {
@@ -75,11 +77,9 @@ body {
   .products {
     height: 100%;
     width: 100%;
-    background-color: chartreuse;
   }
 
   .addProduct {
     height: 100%;
     width: 100%;
-    background-color: blue;
   }
