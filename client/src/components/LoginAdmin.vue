@@ -1,12 +1,13 @@
 <template>
   <div>
-      <form @submit.prevent="login">
-          <label for="email">Email</label><br>
-          <input type="text" name="email" id="email" placeholder="email" v-model="data.email"><br><br>
-          <label for="Password">Password</label><br>
-          <input type="pasword" name="password" id="password" placeholder="password" v-model="data.password"><br><br>
-          <input type="submit" name="" id="" value="login">
-      </form>
+   <div class="log-form">
+    <h2>Login Admin</h2>
+    <form @submit.prevent="login">
+      <input type="text" title="username" placeholder="username" /><br><br>
+      <input type="password" title="username" placeholder="password" /><br><br>
+      <button type="submit" class="btn">Login</button>
+    </form>
+</div>
   </div>
 </template>
 
@@ -44,7 +45,5 @@ export default {
   }
 }
 </script>
-
 <style>
-
 </style>
