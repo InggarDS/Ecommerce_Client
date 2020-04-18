@@ -1,7 +1,28 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Righteous&display=swap');
+
 body {
   margin: 0 ;
 }
 
+.title h1 {
+  padding-top: 10px;
+  font-family: 'Fredoka One', cursive;
+  color: #ffffff;
+}
+
+.login-title h1 {
+  padding-top: 10px;
+  font-family: 'Fredoka One', cursive;
+  color: black;
+  font-size:100px;
+  margin: 0;
+  padding: 0;
+}
+
+.login-title {
+  margin-top: 50px;
+}
 
 
  /* login */
@@ -78,7 +99,7 @@ body {
     width: 100%;
   }
 
-  .addProduct, .editproduct {
+  .addProduct, .editproduct, .dashboard-wrapper {
     height: 100%;
     width: 100%;
   }

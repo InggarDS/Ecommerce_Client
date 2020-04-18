@@ -1,7 +1,7 @@
 <template>
  <div class="left-navbar">
      <div class="title">
-         <h1>Balada</h1>
+         <h1>.Balada.</h1>
      </div>
      <div class="Menu">
         <span class="sub-menu"><h5>Menu</h5></span>
