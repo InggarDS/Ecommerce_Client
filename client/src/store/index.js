@@ -20,7 +20,7 @@ const store = new Vuex.Store({
   actions: {
     login (context, payload) {
       return new Promise((resolve, reject) => {
-        axios.post('http://localhost:3000/login', {
+        axios.post('https://balada-ids.herokuapp.com/login', {
           email: payload.email,
           password: payload.password
         })
@@ -40,7 +40,7 @@ const store = new Vuex.Store({
       return new Promise((resolve, reject) => {
         axios({
           method: 'GET',
-          url: 'http://localhost:3000/products',
+          url: 'https://balada-ids.herokuapp.com/products',
           headers: {
             access_token: localStorage.access_token
           }
@@ -58,7 +58,7 @@ const store = new Vuex.Store({
       return new Promise((resolve, reject) => {
         axios({
           method: 'POST',
-          url: 'http://localhost:3000/products',
+          url: 'https://balada-ids.herokuapp.com/products',
           data: {
             name: payload.name,
             image_url: payload.image_url,
@@ -81,7 +81,7 @@ const store = new Vuex.Store({
       return new Promise((resolve, reject) => {
         axios({
           method: 'DELETE',
-          url: 'http://localhost:3000/products/' + id,
+          url: 'https://balada-ids.herokuapp.com/products/' + id,
           headers: {
             access_token: localStorage.access_token
           }
@@ -94,12 +94,11 @@ const store = new Vuex.Store({
           })
       })
     },
-
     updateProduct (context, payload) {
       return new Promise((resolve, reject) => {
         axios({
           method: 'PUT',
-          url: 'http://localhost:3000/products/' + payload.id,
+          url: 'https://balada-ids.herokuapp.com/products/' + payload.id,
           data: {
             name: payload.name,
             image_url: payload.image_url,
