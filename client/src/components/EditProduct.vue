@@ -82,6 +82,7 @@ export default {
   },
 
   created () {
+    this.isLoading = true
     this.fetchProducts()
       .then(results => {
         const payload = results.data.products.find(val => val.id === this.$route.params.id)
@@ -89,6 +90,12 @@ export default {
         this.data.image_url = payload.image_url
         this.data.price = payload.price
         this.data.stock = payload.stock
+      })
+      .catch(err => {
+        console.log(err)
+      })
+      .finally(() => {
+        this.isLoading = false
       })
   }
 }
