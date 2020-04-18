@@ -5,13 +5,13 @@
      </div>
      <div class="Menu">
         <span class="sub-menu"><h5>Menu</h5></span>
-            <router-link to="/dashboard" tag="button"> <i class="fas fa-home"></i> <div class="btn-text"> DashBoard </div> <div></div></router-link>
+            <router-link to="/dashboard" tag="button"> <i class="fas fa-home"></i> <div class="btn-text"> Dashboard </div> <div></div></router-link>
+            <button><i class="fas fa-desktop"></i><div class="btn-text"> Users </div></button>
         <span class="sub-menu"><h5>App</h5></span>
-            <button @click.prevent="toggleDropdwon" class="btn-ecommerce"> <i class="fas fa-shopping-basket"></i> <div class="btn-text"> E-commerce </div>
+            <button @click.prevent="toggleDropdwon" class="btn-ecommerce"> <i class="fas fa-shopping-basket"></i> <div class="btn-text"> Products </div>
             <i class="fas fa-angle-down"></i> </button>
             <div v-if="isShowed" class="dropdown-ecommerce">
-                <router-link to="/products">Products</router-link>
-                <router-link to="#">Product Detail</router-link>
+                <router-link to="/products">All Products</router-link>
                 <router-link to="/addProduct">Add Product</router-link>
             </div>
             <button><i class="far fa-envelope"></i><div class="btn-text">Email </div> <i class="fas fa-angle-down"></i></button>
@@ -86,7 +86,7 @@ export default {
         display: block;
         text-align: left;
         padding: 6px 8px 6px 48px;
-         cursor: pointer;
+        cursor: pointer;
     }
 
     div button:hover, div a:hover{

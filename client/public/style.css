@@ -55,7 +55,6 @@ body {
 }
 
 
-
 #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -79,7 +78,32 @@ body {
     width: 100%;
   }
 
-  .addProduct {
+  .addProduct, .editproduct {
     height: 100%;
     width: 100%;
   }
+
+
+  h3 {
+    text-align: left;
+    padding-left: 20px;
+    padding-top: 20px;
+  }
+
+/* loading */
+.loading {
+  background: white;
+  position: fixed;
+  z-index: 10;
+  width:100%;
+  height: 100%;
+  opacity: 50%;
+}
+
+lottie-player {
+  top: 0;
+  left: 40%;
+  margin-right: 50%;
+  transform: translate(-50%, 50%);
+  position: absolute;
+}

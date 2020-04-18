@@ -3,7 +3,7 @@
       <div v-if="isLoading" class="loading">
         <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_RnSQsr.json"  background="transparent"  speed="0.5"  style="width: 300px; height: 300px;"  loop autoplay></lottie-player>
       </div>
-      <h3>Add Product</h3>
+      <h3>Edit Product</h3>
       <div v-if="errors">
         <b-alert show variant="danger" v-for="error in errors" :key="error.id">
         {{ error.message }}
@@ -13,7 +13,7 @@
          <b-alert show variant="success">{{success}}</b-alert>
       </div>
       <div class="add-form">
-        <form @submit.prevent="add">
+        <form @submit.prevent="update(product.id)">
           <label for="name">Product Name</label>
         <input type="text" placeholder="Product Name" v-model="data.name">
           <label for="image_url">image_url</label>
@@ -29,7 +29,7 @@
         <input type="number" placeholder="Price" min="0" v-model="data.price">
         <div class="addProduct-btn">
           <input type="submit" name="" id="" value="save">
-          <input type="reset" name="" id="" value="cancel">
+          <router-link to="/products" tag="button" class="cancel-btn">Cancel</router-link>
         </div>
        </form>
       </div>
@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'AddProduct',
@@ -55,17 +55,13 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['addProducts']),
-    add () {
-      this.isLoading = true
-      const payload = {
-        name: this.data.name,
-        image_url: this.data.image_url,
-        price: this.data.price,
-        stock: this.data.stock
-      }
-      this.addProducts(payload)
-        .then(result => {
+    ...mapActions(['fetchProducts']),
+    ...mapActions(['updateProduct']),
+    update (id) {
+      const payload = this.data
+      payload.id = id
+      this.updateProduct(payload)
+        .then((results) => {
           this.errors = []
           this.success = 'Success add product'
         })
@@ -77,10 +73,26 @@ export default {
           this.isLoading = false
         })
     }
+  },
+  computed: {
+    ...mapGetters(['allProducts']),
+    product () {
+      return this.allProducts.find(val => val.id === this.$route.params.id)
+    }
+  },
+
+  created () {
+    this.fetchProducts()
+      .then(results => {
+        const payload = results.data.products.find(val => val.id === this.$route.params.id)
+        this.data.name = payload.name
+        this.data.image_url = payload.image_url
+        this.data.price = payload.price
+        this.data.stock = payload.stock
+      })
   }
 }
 </script>
-
 <style scoped>
 
 #preview {
@@ -128,7 +140,7 @@ input[type=submit] {
   cursor: pointer;
 }
 
-input[type=reset] {
+.cancel-btn {
   width: 100%;
   background-color: #a3a1a1;
   color: white;

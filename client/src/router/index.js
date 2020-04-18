@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import ContentDashboard from '../components/ContentDashboard.vue'
 import Products from '../components/Products.vue'
 import AddProduct from '../components/AddProduct.vue'
+import EditProduct from '../components/EditProduct.vue'
 
 Vue.use(VueRouter)
 
@@ -27,6 +28,11 @@ const routes = [
     path: '/addProduct',
     name: 'AddProduct',
     component: AddProduct
+  },
+  {
+    path: '/products/:id',
+    name: 'EditProduct',
+    component: EditProduct
   }
 ]
 
